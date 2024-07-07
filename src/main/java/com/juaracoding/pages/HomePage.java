@@ -39,6 +39,7 @@ public class HomePage{
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
     private WebElement cartButton;
 
+
     //Assertion
     public String getTxtLogo(){
         return txtLogo.getText();
@@ -70,12 +71,9 @@ public class HomePage{
         txtRemove.click();
     }
 
-
     public void clickCartButton(){
         cartButton.click();
     }
-
-
 
 
 }

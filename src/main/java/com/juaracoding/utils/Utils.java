@@ -25,4 +25,15 @@ public class Utils {
         return pathDestination;
     }
 
+    public static String getScreenshotPass(WebDriver driver, String screenshotName) throws IOException {
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        String pathDestination = System.getProperty("user.dir")+"/PassTestScreenshot/"
+                +screenshotName+"_"+dateName+".png";
+        File destination = new File(pathDestination);
+        FileUtils.copyFile(source, destination);
+        return pathDestination;
+    }
+
 }

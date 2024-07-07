@@ -1,6 +1,7 @@
 package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,6 +27,9 @@ public class CheckoutPage {
 
     @FindBy(xpath = "//input[@id='postal-code']")
     private WebElement posCode;
+
+    @FindBy(xpath = "//h3[@data-test='error']")
+    private WebElement errorMessage;
 
     @FindBy(xpath = "//input[@id='continue']")
     private WebElement continueButton;
@@ -53,6 +57,10 @@ public class CheckoutPage {
 
     public String getTxtCheckout(){
         return txtCheckout.getText();
+    }
+
+    public String getErrorMessage(){
+        return errorMessage.getText();
     }
 
     public String getTxtPaymentInformation(){
@@ -87,6 +95,12 @@ public class CheckoutPage {
         setFirstName(firtsName);
         setLastName(lastName);
         setPosCode(posCode);
+    }
+
+    public void clearAllData(){
+        firstName.sendKeys(Keys.CONTROL+"a"+Keys.DELETE);
+        lastName.sendKeys(Keys.CONTROL+"a"+Keys.DELETE);
+        posCode.sendKeys(Keys.CONTROL+"a"+Keys.DELETE);
     }
 
     public void clickContinueButton(){
